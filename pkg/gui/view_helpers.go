@@ -251,6 +251,7 @@ func (gui *Gui) renderString(g *gocui.Gui, viewName, s string) error {
 		v.Clear()
 		output := string(bom.Clean([]byte(s)))
 		output = utils.NormalizeLinefeeds(output)
+		output = utils.ReplaceTabsWithSpaces(output, gui.Config.GetUserConfig().GetInt("gui.tabSize"))
 		fmt.Fprint(v, output)
 		v.Wrap = true
 		return nil

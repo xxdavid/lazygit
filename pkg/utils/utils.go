@@ -74,6 +74,13 @@ func NormalizeLinefeeds(str string) string {
 	return str
 }
 
+// ReplaceTabsWithSpaces returns the original string with spaces instead of tabs
+func ReplaceTabsWithSpaces(str string, tabSize int) string {
+	spaces := strings.Repeat(" ", tabSize)
+	str = strings.Replace(str, "\t", spaces,-1)
+	return str
+}
+
 // GetProjectRoot returns the path to the root of the project. Only to be used
 // in testing contexts, as with binaries it's unlikely this path will exist on
 // the machine
